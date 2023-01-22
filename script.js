@@ -130,17 +130,9 @@ function median(sums)
 function doubles(rolls) 
 {
     let count = 0;
-    for (let result of rolls) 
+    for (let result of rolls) // checks from each roll with TWO dice
     {
-        let double = false;
-        for (let i = 0; i < roll.length; i++) 
-        {
-            if (result[0] === result[1]) // checks the first dice AND second dice's results
-            {
-                double = true;
-            }
-        }
-        if (doubleFound) 
+        if (result[0] === result[1]) // checks the first dice AND second dice's results
         {
             count++;
         }
@@ -148,7 +140,7 @@ function doubles(rolls)
     return count; // tells the user how many times BOTH dice rolled the same result
 }
 
-function triples(rolls) 
+function triples(rolls) // checks from each roll with THREE dice
 {
     let count = 0;
     for (let result of rolls) 
