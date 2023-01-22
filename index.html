@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Controls</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+</head>
+<body onload = 'initialize();'>
+    Dice to Roll: <input type = "number" id = "diceToRoll"><br />
+    Times to Roll the Dice: <input type = "number" id = "timesRoll"><br />
+    <hr />
+    <button onclick = "rollDice();">Click here to roll the dice!</button>
+    <br/>
+    <br/>
+    <table id = 'dicetable'>
+        <tr>
+            <th>Roll</th>
+            <th>Result</th>
+        </tr>
+    </table>
+</body>
+</html>

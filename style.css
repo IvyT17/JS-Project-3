@@ -1,0 +1,13 @@
+table
+{
+    border: thick solid grey;
+    border-collapse: collapse;
+    width: 25%;
+}
+
+th, td
+{
+    border: thin solid black;
+    padding: 8px;
+    width: 50%;
+}
