@@ -127,6 +127,42 @@ function median(sums)
     // Math.floor is if the number is odd because you have to remove the decimal since there are only whole numbers on the dice
 }
 
+function doubles(rolls) 
+{
+    let count = 0;
+    for (let result of rolls) 
+    {
+        let double = false;
+        for (let i = 0; i < roll.length; i++) 
+        {
+            if (result[0] === result[1]) // checks the first dice AND second dice's results
+            {
+                double = true;
+            }
+        }
+        if (doubleFound) 
+        {
+            count++;
+        }
+    }
+    return count; // tells the user how many times BOTH dice rolled the same result
+}
+
+function countTriples(rolls) 
+{
+    let count = 0;
+    for (let result of rolls) 
+    {
+        if (result[0] === result[1] && result[1] === result[2]) // checks the first dice, second dice, AND third dice's results
+        {
+            count++;
+        }
+    }
+    return count; // tells the user how many times ALL 3 dice rolled the same result
+}
+
+
+
 function getRandomInteger(lower, upper) // like Math.random()
 {
     var multiplier = upper - (lower - 1);
