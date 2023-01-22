@@ -148,7 +148,7 @@ function doubles(rolls)
     return count; // tells the user how many times BOTH dice rolled the same result
 }
 
-function countTriples(rolls) 
+function triples(rolls) 
 {
     let count = 0;
     for (let result of rolls) 
