@@ -13,6 +13,8 @@ function rollDice()
     timesRoll = parseInt(document.getElementById("timesRoll").value); // takes in integer value for how many times the dice are rolled
     // console.log(timesRoll); check
     result = [];
+    doubles = 0;
+    triples = 0;
     for (let i = 0; i < timesRoll; i++)
     {
         result.push(roll(diceToRoll)); // push appends into array
@@ -25,12 +27,10 @@ function rollDice()
     else if(diceToRoll == 2) // 2 dice = totals can only be 2-12
     {
         totals = [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
-        doubles(result);
     }
     else // 3 dice = totals can only be 3-18
     {
         totals = [3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18];
-        triples(result);
     }
 
     let allSums = []; // empty array for all the totals of all the times rolled
@@ -78,7 +78,7 @@ function rollDice()
         if(diceToRoll >= 2)
         {
             newCell = newRow.insertCell();
-            newCell.innerHTML = doubles(result);
+            newCell.innerHTML = doubles;
         }
         else
         {
@@ -89,7 +89,7 @@ function rollDice()
         if(diceToRoll == 3)
         {
             newCell = newRow.insertCell();
-            newCell.innerHTML = triples(result);
+            newCell.innerHTML = triples;
         }
         else
         {
@@ -117,9 +117,25 @@ function frequency(result, numsRolled) // checks how many times one result has a
 function roll(numDice)
 {
     let sum = 0;
+    let rolledNums = [];
     for (let i = 0; i < numDice; i++) 
     {
-        sum += getRandomInteger(1, 6);
+        let v = getRandomInteger(1, 6);
+        rolledNums.push(v);
+        sum += v;
+    }
+    if (numDice == 2) { // checks for doubles in current roll if two dice are rolled
+        if (rolledNums[0] == rolledNums[1]) {
+            doubles++;
+        }
+    }
+    if (numDice == 3) { // checks for doubles and triples in current roll if three dce are rolled
+        if (rolledNums[0] == rolledNums[1]) {
+            doubles++;
+        }
+        if (rolledNums[0] == rolledNums[1] && rolledNums[1] == rolledNums[2]) {
+            triples++;
+        }
     }
     return sum;
 }
@@ -138,32 +154,6 @@ function median(sums)
 {
     return sums.sort()[Math.floor(sums.length / 2)]; // first sort through the array so it's lowest to highest value
     // Math.floor is if the number is odd because you have to divide the number in half
-}
-
-function doubles(rolls) 
-{
-    let count = 0;
-    for (let result of rolls) // checks from each roll with TWO dice
-    {
-        if (result[0] === result[1]) // checks the first dice AND second dice's results
-        {
-            count++;
-        }
-    }
-    return count; // tells the user how many times BOTH dice rolled the same result
-}
-
-function triples(rolls) // checks from each roll with THREE dice
-{
-    let count = 0;
-    for (let result of rolls) 
-    {
-        if (result[0] === result[1] && result[1] === result[2]) // checks the first dice, second dice, AND third dice's results
-        {
-            count++;
-        }
-    }
-    return count; // tells the user how many times ALL 3 dice rolled the same result
 }
 
 function getRandomInteger(lower, upper) // like Math.random()
